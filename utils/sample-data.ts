@@ -7,3 +7,13 @@ export const sampleUserData: User[] = [
   { id: 103, name: 'Caroline' },
   { id: 104, name: 'Dave' },
 ]
+
+export const sampleTodoList: string[] = [
+  "--duo-en",
+  "--duo-jp",
+  "--duo-vn",
+  "--duo-cn",
+  "--code-ts",
+  "--gram-jp",
+  "--gram-en"
+]
