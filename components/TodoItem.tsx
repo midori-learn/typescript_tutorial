@@ -1,35 +1,56 @@
 import React from 'react';
-import {Checkbox, Box} from '@material-ui/core';
+import {Checkbox, Box, ButtonBase} from '@material-ui/core';
 import Button from './Button';
-
+import {handleUpdateTodo, handleDeleteTodo} from '../utils/handleCRUD';
+import { Todo } from '../interfaces'; 
+import EditModal from './EditModal';
+import {DeleteSharp} from '@material-ui/icons';
 type Props = {
-    isCheck: boolean,
-    value: string,
+    item: Todo,
+    onChange: Function,
+    dispatch: Function
 }
 
-const TodoItem = ({isCheck, value}: Props) => (
+const TodoItem = ({item, onChange, dispatch}: Props) => (
     <Box style = {{
         display: "flex",
         flexDirection: "row",
-        flex:3,
-        margin:10
+        marginBottom: 5,
+        width: '100%'
     }}>
         <Box style = {{
-            flex: 2,
-            display: "flex"
+            display: "flex",
+            alignItems:'center'
         }}>
+           {/* <ButtonBase onClick = {() => {}}>
+               Edit
+            </ButtonBase> */}
             <Checkbox 
-                checked = {isCheck}
-                size = "small"
+                checked = {item.checked}
+                size = "medium"
             />
-            <Box>{value}</Box>
+            <Box style = {{
+                justifyContent: 'center',
+                alignItems:'center',
+                width:120
+            }}>{item.title}</Box>
+            <ButtonBase style = {{
+                marginRight: 10,
+                padding:5,
+                backgroundColor: 'lightblue',
+                borderRadius:4
+            }}>
+                Add in Process
+            </ButtonBase>
+            <ButtonBase 
+                onClick = {() => handleDeleteTodo(dispatch, item.id)}
+                style = {{
+                    marginRight: 5
+                }}
+            >
+                <DeleteSharp fontSize = "small"/>
+            </ButtonBase>
         </Box>
-        <Button
-            backgroundColor = ""
-            color = ""
-            title = "Add into Process"
-            onSubmit = {() => {}} 
-        />
     </Box>
 )
 

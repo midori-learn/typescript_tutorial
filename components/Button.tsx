@@ -2,20 +2,12 @@ import * as React from 'react';
 import {Box, ButtonBase} from '@material-ui/core';
 
 type Props = {
-    backgroundColor: string,
-    color:string,
+    backgroundColor?: string,
+    color?:string,
     title: string,
-    onSubmit: (event) => void;
+    onSubmit: Function
 }
 
-// const style = {
-//     minWidth: 80,
-//     padding: 10,
-//     backgroundColor: backgroundColor||"blue",
-//     color: color||"#fff",
-//     borderRadius: 8
-
-// }
 const Button = ({backgroundColor, color, title, onSubmit }: Props) => (
     <ButtonBase
         style = {{
@@ -25,7 +17,7 @@ const Button = ({backgroundColor, color, title, onSubmit }: Props) => (
             color: color||"#fff",
             borderRadius: 8
         }}
-        onSubmit = {(event) => onSubmit(event)}
+        onClick = {() => onSubmit}
     >
         {title}
     </ButtonBase>

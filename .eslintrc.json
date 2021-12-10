@@ -1,0 +1,72 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "indent": ["error", 2],
+    "jsx-quotes": ["error", "prefer-double"],
+    "key-spacing": ["error", { "beforeColon": false }],
+    "keyword-spacing": ["error", { "before": true }],
+    "max-len": [
+      "error",
+      {
+        "code": 150,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreRegExpLiterals": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-irregular-whitespace": ["error", { "skipTemplates": true, "skipStrings": true, "skipComments": true }],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
+    "no-unneeded-ternary": "error",
+    "no-whitespace-before-property": "error",
+    "nonblock-statement-body-position": ["error", "below"],
+    "object-curly-spacing": ["error", "always"],
+    "prefer-spread": "error",
+    "semi": ["error", "always"],
+    "semi-spacing": "error",
+    "semi-style": ["error", "last"],
+    "spaced-comment": ["error", "always", { "exceptions": ["*"] }],
+    "arrow-spacing": "error",
+    "no-confusing-arrow": "error",
+    "no-duplicate-imports": "error",
+    "no-var": "off",
+    "no-empty-function": ["error", { "allow": ["arrowFunctions"] }],
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-undef": 0,
+    "no-useless-escape": "off",
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "react/jsx-key": "off",
+    "react/jsx-no-undef": "error",
+    "no-case-declarations": "off",
+    "object-property-newline": "error",
+    "multiline-ternary": ["error", "always"],
+    "linebreak-style": "warn",
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ImportDeclaration": "never",
+        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+      }
+    ],
+    "implicit-arrow-linebreak": "error",
+    "no-redeclare": "error",
+    "array-bracket-newline": ["error", "always"],
+    "curly": ["error", "multi", "consistent"]
+  }
+}

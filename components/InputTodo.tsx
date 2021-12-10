@@ -1,57 +1,66 @@
-import * as React from 'react';
-import {Box, fade, InputBase,TableContainer, TableHead, TableBody, TableCell} from '@material-ui/core';
+import React, {useState} from 'react';
+import {Box, InputBase, ButtonBase} from '@material-ui/core';
 import Button from './Button'
 
 type Props = {
-    text: String,
-    onChange: (text:String) => void
+    value: string,
+    onChange: () => {}
+    onSubmit: () => {}
 }
 
-const InputTodo = ({text, onChange }: Props) => (
-    <TableContainer display = "flex">
-        <TableHead>
-            <TableCell>
-                Todo
-            </TableCell>
-            <TableCell>
-                Deadline
-            </TableCell>
-        </TableHead>
-        <TableBody>
-            <TableCell>
+const InputTodo = ({value, onChange, onSubmit, ...other }: Props) => {
+    const [title, setTitle] = useState<string>("")
+    return <Box>
+                <Box style = {{
+                    display: "flex",
+                    marginLeft: 10
+                }}>
+                    <Box>Todo</Box>
+                    <Box>Deadline</Box>
+                </Box>
+
+                <Box style = {{
+                    display: "flex"
+                }}>
                 <InputBase
                 placeholder = "Insert new todo here..."
+                type = {value}
+                onChange = {onChange}
                 style = {{
                     border: "1px solid gray",
-                    backgroundColor: fade("#000", 0.05),
+                    backgroundColor: "gray",
+                    color:"black",
                     width: 200,
                     borderRadius:8
                 }}
+                {...other}
                 />
-            </TableCell>
-            <TableCell>
                 <Box
                     style = {{
                         border: "1px solid gray",
-                        backgroundColor: fade("#000", 0.05),
+                        backgroundColor: "gray",
                         width: "fit-content",
                         padding: 10,
                         borderRadius:8
                     }}
                 >dropdown deadline
                 </Box>
-            </TableCell>
-            <TableCell>
-                <Button
-                    backgroundColor = "lightblue"
-                    color = "blue"
-                    title = "Add"
-                    onSubmit = {() => {}}
-                />
-            </TableCell>
-        </TableBody>
-    </TableContainer>
+                <ButtonBase
+        style = {{
+            minWidth: 80,
+            padding: 10,
+            backgroundColor:"blue",
+            color: "#fff",
+            borderRadius: 8
+        }}
+        onSubmit = {onSubmit}
+        {...other}
+    >
+        {title}
+    </ButtonBase>
 
-)
+                </Box>
+    </Box>
+}
 
 export default InputTodo;

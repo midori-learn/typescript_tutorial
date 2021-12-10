@@ -1,20 +1,23 @@
 import { Box } from '@material-ui/core';
 import * as React from 'react'
 import TodoItem from './TodoItem'
-// import { User } from '../interfaces'
+import { Todo } from '../interfaces';
 
 type Props = {
-  items: string[]
+  items: Todo[],
+  onChange:Function,
+  dispatch: Function
 }
 
-const TodoList = ({ items }: Props) => (
-  <Box style = {{
-    width: "50vw"
-  }}>
-    {items.map((item, index) => (
+const TodoList = ({ items, onChange, dispatch }: Props) => (
+  <Box>
+    {items.map((item) => (
         <TodoItem 
-          isCheck = {true}
-          value={item} />
+          key = {item?.id}
+          dispatch = {dispatch}
+          item = {item}
+          onChange = {onChange}
+          />
     ))}
   </Box>
 )
